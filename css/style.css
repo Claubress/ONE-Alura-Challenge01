@@ -1,0 +1,287 @@
+body {
+    background: #F3F5Fc;
+    font-family: 'Inter', sans-serif;
+    box-sizing: border-box;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+/*   I n p u t  */
+
+.input {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.input__logo {
+    padding: 24px 16px;
+}
+
+.input__text {
+    display: flex;
+    flex-direction: column;
+    padding: 80px 16px 0 16px;
+}
+
+.input__text__textarea {
+    width: 100%;
+    padding: 0;
+    background-color: inherit;
+    font-family: inherit;
+    color: #0a3871;
+    border: none;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2em;
+    line-height: 150%;
+    overflow: hidden;
+    resize: none;
+}
+
+.input__text__textarea::placeholder {
+    color: #0a3871;
+}
+
+.input__text__textarea:focus {
+    outline: none;
+}
+
+.input__controls__restriction {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+}
+
+.input__controls__restriction p {
+    font-size: 0.75em;
+    margin-left: 8px;
+}
+
+.input__controls__buttons {
+    display: flex;
+    flex-direction: column;
+    margin-top: 17px;
+    padding: 0 16px;
+    gap: 24px;
+}
+
+.input__controls__button {
+    padding: 24px;
+    border: 1px solid #0A3871;
+    border-radius: 24px;
+    background-color: inherit;
+    font-family: inherit;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1em;
+    color: #0A3871;
+}
+
+.input__controls__button:hover {
+    cursor: pointer;
+}
+
+.input__controls__button:active {
+    background-color:darkcyan;
+}
+
+.input__controls__button--ppal {
+    background-color: #0A3871;
+    color: #FFFFFF;
+}
+
+
+/*   O u t p u t  */
+
+.output {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 80px 24px 40px 24px;
+    background-color: #FFFFFF;
+    border-radius: 32px;
+    box-shadow: 0px 24px 32px -8px rgba(0, 0, 0, 0.08);
+}
+
+/* aca */
+.output__image {
+    /* block */
+    display: none;
+}
+
+/* aca */
+.output__message {
+    /* block */
+    display: block;
+}
+
+.output__message__text {
+    font-style: normal;
+    text-align: center;
+}
+
+.output__message__text__ppal {
+    padding: 32px 32px 0 32px;
+    color: #343A40;
+    font-weight: 700;
+    font-size: 1.5em;
+    line-height: 120%;
+}
+
+.output__message__text__sec {
+    margin-top: 16px;
+    padding: 0 32px 32px 32px;
+    color: #495057;
+    font-weight: 400;
+    font-size: 1em;
+    line-height: 150%;
+}
+
+.output__text {
+    /* flex */
+    display: none;
+    flex-direction: column;
+    padding: 32px 32px 0 32px;
+}
+
+.output__text__textarea {
+    width: 100%;
+    padding: 0;
+    background-color: inherit;
+    font-family: inherit;
+    color: #495057;
+    border: none;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.5em;
+    line-height: 150%;
+    overflow: hidden;
+    resize: none;
+}
+
+.output__text__content:focus {
+    outline: none;
+}
+
+.output__controls {
+    /* flex */
+    display: none;
+    flex-direction: column;
+    padding: 0 32px;
+    margin-bottom: 32px;
+}
+
+.output__controls__button {
+    padding: 24px;
+    border: 1px solid #0A3871;
+    border-radius: 24px;
+    background: #FFFFFF;
+    font-family: inherit;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1em;
+    color: #0A3871;
+}
+
+.output__controls__button:hover {
+    cursor: pointer;
+}
+
+.output__controls__button:active {
+    background-color:darkcyan;
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    background-color: #0A3871;
+    color: #FFFFFF;
+    margin-top: 44px;
+    padding: 8px 16px 8px 16px;
+}
+
+@media screen and (min-width: 768px) {
+    
+    .input__logo {
+        padding: 73px 40px;
+    }
+
+    .input__text {
+        padding: 120px 40px 0 40px;
+    }
+
+    .input__text__textarea {
+        margin-top: 60px;
+        padding: 0 40px;
+    }
+
+    .input__controls__restriction {
+        margin: 0 40px;
+    }
+
+    .input__controls__buttons  {
+        flex-direction: row;
+        flex-grow: 1;
+        padding: 0 40px;
+    }
+
+    .input__controls__button  {
+        width: 50%;
+    }
+    
+    .output {
+        margin: 80px 40px 40px 40px;
+    }        
+}
+
+@media screen and (min-width: 1024px) {
+
+    main {
+        display: flex;
+        flex-direction: row;
+        width: 100wh;
+        height: 90vh;
+    }
+
+    .input {
+        width: 70%;
+    }
+
+    .input__logo {
+        padding: 40px 84px;
+    }
+
+    .input__text {
+        padding: 54px 240px 0 240px;
+    }
+
+    .input__controls__restriction {
+        padding: 0px 210px;
+    }
+
+    .input__controls__buttons {
+        padding: 0 20px 0 250px;
+    }
+
+    .output {
+        width: 30%;
+        height: 82vh;
+        justify-content:space-between;
+    }
+
+    .output__image {
+        /* block */
+        display: flex;
+        margin-top: 40px;
+    }
+    
+    footer {
+        margin-top: 34px;
+        padding: 8px 16px 8px 16px;
+    }
+}
