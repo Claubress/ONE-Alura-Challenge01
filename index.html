@@ -34,8 +34,8 @@
                     <p>Solo letras minúsculas y sin acentos</p>
                 </div>
                 <div class="input__controls__buttons">
-                    <button class="input__controls__button input__controls__button--ppal">Encriptar</button>
-                    <button class="input__controls__button">Desencriptar</button>
+                    <button id="btn_encritar" class="input__controls__button input__controls__button--ppal">Encriptar</button>
+                    <button id="btn_desencritar" class="input__controls__button">Desencriptar</button>
                 </div>
             </div>
 
@@ -54,11 +54,11 @@
             </div>
           
             <div class="output__text">
-                <textarea class="output__text__textarea" cols="30" rows="6" readonly>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, non at inventore distinctio sunt error adipisci accusantium consequatur. Reprehenderit repudiandae doloremque nemo minima! Fugit ducimus quod adipisci vero nulla laborum.</textarea>
+                <textarea class="output__text__textarea" cols="30" rows="6" readonly></textarea>
             </div>
 
             <div class="output__controls">
-                <button class="output__controls__button">Copiar</button>
+                <button id="btn_copiar" class="output__controls__button">Copiar</button>
             </div>
 
         </section>
@@ -68,5 +68,6 @@
     <footer>
         <p>Desarrollado por Claudio Bressan</p>
     </footer>
+    <script src="scripts/app.js"></script>
 </body>
 </html>
