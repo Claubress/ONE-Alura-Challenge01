@@ -1,33 +1,70 @@
-
-
 // Eventos
 
 // Texto a tratar
 const txtInput = document.querySelector('.input__text__textarea');
-txtInput.addEventListener('focus', iniciar);
+txtInput.addEventListener('focus', start);
 
 // Botón encriptar
-const btnEncripta = document.querySelector('#btn_encritar');
-btnEncripta.addEventListener('click', encriptar);
+const btnEncrypt = document.querySelector('#btn_encrypt');
+btnEncrypt.addEventListener('click', encrypt);
 
 // Botón desencriptar
-const btnDesencriptar = document.querySelector('#btn_desencritar');
-btnDesencriptar.addEventListener('click', desencriptar);
+const btnDecrypt = document.querySelector('#btn_decrypt');
+btnDecrypt.addEventListener('click', decrypt);
 
 // Botón copiar
-const btnCopiar = document.querySelector('#btn_copiar');
-btnCopiar.addEventListener('click', copiar);
+const btnCopy = document.querySelector('#btn_copy');
+btnCopy.addEventListener('click', copy);
 
 
-// Funciones
+// Funciones asociadas a eventos
 
-function actualizar(origen) {
+function start() {
+    update('inicio');
+} 
+
+
+function encrypt() {
+    const encKey = function(text) {
+        return (text.replace(/e/g, 'enter')
+        .replace(/i/g, 'imes')
+        .replace(/a/g, 'ai')
+        .replace(/o/g, 'ober')
+        .replace(/u/g, 'ufat'));
+    }; 
+    transform(encKey);
+}
+
+
+function decrypt() {
+
+    const decKey = function(text) {
+        return (text.replace(/enter/g, 'e')
+        .replace(/imes/g, 'i')
+        .replace(/ai/g, 'a')
+        .replace(/ober/g, 'o')
+        .replace(/ufat/g, 'u'));
+    } 
+    transform(decKey);
+}
+
+
+function copy() {
+    const outputText = document.querySelector('.output__text__textarea');    
+    navigator.clipboard.writeText(outputText.value);
+}
+
+
+
+// funciones auxiliares
+
+function update(origin) {
     const boxImagen = document.querySelector('.output__image');
     const boxMensaje = document.querySelector('.output__message');
     const boxTxtOutput = document.querySelector('.output__text');
     const boxBtnCopiar = document.querySelector('.output__controls');
  
-    if (origen === 'inicio') {
+    if (origin === 'inicio') {
  
         if (screen.width >= 1024) {
             boxImagen.style.display = 'block';
@@ -35,8 +72,7 @@ function actualizar(origen) {
         boxMensaje.style.display = 'block'
         boxTxtOutput.style.display = 'none';
         boxBtnCopiar.style.display = 'none'
-        
-        console.log('actualizar inicio');
+
     } else {
  
         if (screen.width >= 1024) {
@@ -45,28 +81,78 @@ function actualizar(origen) {
         boxMensaje.style.display = 'none'
         boxTxtOutput.style.display = 'flex';
         boxBtnCopiar.style.display = 'flex'
- 
-        console.log('actualizar otro');
-
     }
 }
 
-function iniciar() {
-    actualizar('inicio');
-} 
+function validate(text) {
+    let validated = '';
+    let success = false;     
 
+    if (text.length !== 0) {
+        validated += (+ thereCapitals(text)).toString();
+        validated += (+ thereDigits(text)).toString();
+        validated += (+ thereAccents(text)).toString();
+        
+        if (validated !== '000') {
+            let message = '';
+            message = 'El mensaje infringe las restricciones, contiene:\n'
+            message += validated[0] === '1' ? 'Mayúsculas\n' : '';
+            message += validated[1] === '1' ? 'Números\n' : '';
+            message += validated[2] === '1' ? 'Vocales acentuadas\n' : '';
+            message += '\n¿Desea que lo arregle por usted?';
+            if (confirm(message)) {
+                success = true;
+                text = validated[0] === '1' ? text.toLowerCase() : text; 
+                text = validated[1] === '1' ? removeDigits(text) : text; 
+                text = validated[2] === '1' ? removeAccents(text) : text; 
+            }
+        } else {
+            success = true;  
+        }
+    } 
+    return [success, text];
+}
 
-function encriptar() {
-    actualizar('');
-    console.log("Encriptar");
+function thereCapitals(text) {
+    return (/[A-Z]/.test(text));
 }
 
 
-function desencriptar() {
-    console.log("Desencriptar");
+function thereDigits(text) {
+    return (/[0-9]/.test(text));
 }
 
 
-function copiar() {
-    console.log("Copiar");
+function thereAccents(text) {
+    return (/[áéíóú]/i.test(text));
 }
+
+
+function removeAccents(text) {
+    return (text.normalize('NFD')
+                .replace(/([aeio])\u0301|(u)[\u0301\u0308]/gi,"$1$2"));
+}
+
+
+function removeDigits(text) {
+    return (text.normalize('NFD').replace(/\d+\s|\d+/g,""));
+}
+
+
+function transform(key) {
+    const inputText = document.querySelector('.input__text__textarea');    
+    const outputText = document.querySelector('.output__text__textarea');    
+    const text = inputText.value;
+    
+    let transformedText = '';
+
+    const [isValid, cleanText] = validate(text);
+    if (isValid) {
+        transformedText = key(cleanText);      
+        outputText.value = transformedText;
+        inputText.value = ''; 
+        update('');
+    }
+}
+
+
