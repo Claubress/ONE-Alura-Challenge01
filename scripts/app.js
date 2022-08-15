@@ -21,6 +21,9 @@ btnCopy.addEventListener('click', copy);
 
 function start() {
     update('inicio');
+    if (screen.width >= 1024) {
+        intervalID = animateDiamond();
+    }
 } 
 
 
@@ -153,6 +156,35 @@ function transform(key) {
         inputText.value = ''; 
         update('');
     }
+    deanimateDiamond();
 }
 
+function animateDiamond() {
+
+    var images = new Array()
+    images = [
+        "images/munhecoB01.png",
+        "images/munhecoB02.png"
+    ];
+    var actualImage = 0;
+
+    const animate =  function() {
+        document.querySelector(".image").src = images[actualImage]
+        actualImage++;
+        if (images.length == actualImage) {
+            actualImage = 0;
+        }
+    }
+    
+    console.log("animateD");
+
+    return (setInterval(animate, 400));
+}
+
+function deanimateDiamond() {
+    clearInterval(intervalID);
+    if (screen.width >= 1024) {
+        document.querySelector(".image").src = "images/munheco00.png";
+    }
+}
 

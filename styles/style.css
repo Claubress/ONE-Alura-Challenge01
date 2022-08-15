@@ -1,5 +1,5 @@
 body {
-    background: #F3F5Fc;
+    background: #F3F5FC;
     font-family: 'Inter', sans-serif;
     box-sizing: border-box;
 }
@@ -79,19 +79,23 @@ main {
     font-weight: 400;
     font-size: 1em;
     color: #0A3871;
-}
-
-.input__controls__button:hover {
     cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out;
+
 }
 
 .input__controls__button:active {
-    background-color:darkcyan;
+    -webkit-transform: translate(5px, 5px);
+    transform: translate(5px, 5px);
 }
 
 .input__controls__button--ppal {
     background-color: #0A3871;
     color: #FFFFFF;
+}
+
+.input__controls__button:hover {
+    box-shadow: 0 0 12px 0 #0A3871 inset, 0 0 12px 4px #0472f8;
 }
 
 
@@ -107,15 +111,12 @@ main {
     box-shadow: 0px 24px 32px -8px rgba(0, 0, 0, 0.08);
 }
 
-/* aca */
 .output__image {
     /* block */
     display: none;
 }
 
-/* aca */
 .output__message {
-    /* block */
     display: block;
 }
 
@@ -171,7 +172,7 @@ main {
     /* flex */
     display: none;
     flex-direction: column;
-    padding: 0 32px;
+    padding: 0 32px ;
     margin-bottom: 32px;
 }
 
@@ -185,15 +186,20 @@ main {
     font-weight: 400;
     font-size: 1em;
     color: #0A3871;
-}
-
-.output__controls__button:hover {
     cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out;
 }
 
 .output__controls__button:active {
-    background-color:darkcyan;
+    -webkit-transform: translate(5px, 5px);
+    transform: translate(5px, 5px);
 }
+
+.output__controls__button:hover {
+    box-shadow: 0 0 12px 0 #0A3871 inset, 0 0 12px 4px #0472f8;
+}
+
+/*   F o o t e r  */
 
 footer {
     display: flex;
@@ -203,6 +209,12 @@ footer {
     color: #FFFFFF;
     margin-top: 44px;
     padding: 8px 16px 8px 16px;
+    text-align: center;
+    line-height: 130%;
+}
+
+.footer_dash {
+    visibility: hidden;
 }
 
 @media screen and (min-width: 768px) {
@@ -237,6 +249,14 @@ footer {
     .output {
         margin: 80px 40px 40px 40px;
     }        
+
+    footer {
+        line-height: 1;
+    }
+
+    .footer_dash {
+        visibility: visible;
+    }
 }
 
 @media screen and (min-width: 1024px) {
@@ -244,12 +264,12 @@ footer {
     main {
         display: flex;
         flex-direction: row;
-        width: 100wh;
+        width: 100vw;
         height: 90vh;
     }
 
     .input {
-        width: 70%;
+        width: 74%;
     }
 
     .input__logo {
@@ -257,7 +277,7 @@ footer {
     }
 
     .input__text {
-        padding: 54px 240px 0 240px;
+        padding: 30px 240px 0 240px;
     }
 
     .input__controls__restriction {
@@ -269,19 +289,25 @@ footer {
     }
 
     .output {
-        width: 30%;
-        height: 82vh;
+        margin-top: 40px;
+        width: 26%;
+        height: 86vh;
         justify-content:space-between;
     }
 
+    .output__message__text__ppal {
+        padding: 24px 32px 0 32px;
+    }
+        
     .output__image {
         /* block */
-        display: flex;
-        margin-top: 40px;
+        display: block;
+        margin-top: 34px;
     }
     
     footer {
-        margin-top: 34px;
-        padding: 8px 16px 8px 16px;
+        margin-top: 31px;
+        padding: 8px 16px 10px 16px;
     }
+
 }
